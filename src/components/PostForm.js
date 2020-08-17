@@ -34,7 +34,7 @@ export default class PostForm extends React.Component {
             type="text"
             className="form-control"
             id="title"
-            value={this.state.value}
+            value={this.state.title}
             name="title"
             onChange={this.changeInputHandler}
           />
