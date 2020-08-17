@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default  class PostForm extends React.Component {
+export default class PostForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -9,9 +9,7 @@ export default  class PostForm extends React.Component {
     };
   }
 
-  submitHandler = (event) => {
-    event.preventDefault();
-
+  submitHandler = () => {
     const {title} = this.state;
     const newPost = {
       title, id: Date.now().toString(),
@@ -19,19 +17,17 @@ export default  class PostForm extends React.Component {
 
     console.log(newPost);
     this.setState({ title: '' });
-    this.myInput.value = '';
   };
 
   changeInputHandler = (ev) => {
-    ev.persist();
-    this.setState(prev => ({...prev, ...{
-      [ev.target.name]: ev.target.value
-    }}));
+    this.setState({
+      title: ev.target.value
+    });
   };
 
   render() {
     return (
-      <form method="post" onSubmit={this.submitHandler}>
+      <form>
         <div className="form-group">
           <label htmlFor="title">Заголовок поста</label>
           <input
@@ -40,11 +36,16 @@ export default  class PostForm extends React.Component {
             id="title"
             value={this.state.value}
             name="title"
-            ref={(ref) => this.myInput = ref}
             onChange={this.changeInputHandler}
           />
         </div>
-        <button className="btn btn-success" type="submit">Создать</button>
+        <button
+            className="btn btn-success"
+            type="button"
+            onClick={this.submitHandler}
+        >
+          Создать
+        </button>
       </form>
     )
   }
