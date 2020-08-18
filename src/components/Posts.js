@@ -7,10 +7,10 @@ const Posts = ({syncPosts}) => {
     return <p className="text-center">Пока нет постов...</p>
   }
   return syncPosts.map(post => <Post post={post} key={post.id} />)
-}
+};
 
 const mapStateToProps = state => ({
   syncPosts: state.posts.posts,
-})
+});
 
 export default connect(mapStateToProps, null)(Posts)

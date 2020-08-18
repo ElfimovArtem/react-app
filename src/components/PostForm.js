@@ -60,5 +60,5 @@ class PostForm extends React.Component {
 
 const mapDispatchToProps = {
   createPost,
-}
+};
 export default connect(null, mapDispatchToProps)(PostForm);
